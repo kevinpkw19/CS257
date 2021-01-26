@@ -14,7 +14,7 @@ import csv
 noc_dictionary={}
 
 with open('noc_regions.csv') as csvfile:
-    with open('noc_info.csv', 'w') as writefile1:
+    with open('noc_info.csv', 'w', newline="") as writefile1:
         line_reader = csv.reader(csvfile, delimiter = ',')
         line_writer2 = csv.writer(writefile1, delimiter = ',')
         header = ["id","noc", "region"]
@@ -70,7 +70,7 @@ with open('noc_regions.csv') as csvfile:
 team_dictionary={}
 
 with open('athlete_events.csv') as csvfile:
-    with open('team_info.csv', 'w') as writefile2:
+    with open('team_info.csv', 'w', newline="") as writefile2:
         line_reader = csv.reader(csvfile, delimiter = ',')
         line_writer2 = csv.writer(writefile2, delimiter = ',')
         header = ["team_id","team","noc_id"]
@@ -93,7 +93,7 @@ with open('athlete_events.csv') as csvfile:
 athlete_dictionary = {}
 
 with open('athlete_events.csv') as csvfile:
-    with open('athlete_info.csv', 'w') as writefile3:
+    with open('athlete_info.csv', 'w', newline="") as writefile3:
         line_reader = csv.reader(csvfile, delimiter = ',')
         line_writer3 = csv.writer(writefile3, delimiter = ',')
         header = ["athlete_id","athlete_name","team_id"]
@@ -116,7 +116,7 @@ with open('athlete_events.csv') as csvfile:
         
 games_dictionary={}
 with open('athlete_events.csv') as csvfile:
-    with open('events_info.csv', 'w') as writefile4:
+    with open('events_info.csv', 'w', newline="") as writefile4:
         line_reader = csv.reader(csvfile, delimiter = ',')
         line_writer4 = csv.writer(writefile4, delimiter = ',')
         header = ["games_id", "games","year_name","event_name","athlete_id","medal"]
