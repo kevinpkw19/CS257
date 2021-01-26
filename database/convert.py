@@ -17,8 +17,8 @@ with open('noc_regions.csv') as csvfile:
     with open('noc_info.csv', 'w', newline="") as writefile1:
         line_reader = csv.reader(csvfile, delimiter = ',')
         line_writer2 = csv.writer(writefile1, delimiter = ',')
-        header = ["id","noc", "region"]
-        line_writer2.writerow(header)
+        # header = ["id","noc", "region"]
+        # line_writer2.writerow(header)
         next(csvfile)
         for line in line_reader:
             noc=line[0]
@@ -73,8 +73,8 @@ with open('athlete_events.csv') as csvfile:
     with open('team_info.csv', 'w', newline="") as writefile2:
         line_reader = csv.reader(csvfile, delimiter = ',')
         line_writer2 = csv.writer(writefile2, delimiter = ',')
-        header = ["team_id","team","noc_id"]
-        line_writer2.writerow(header)
+        # header = ["team_id","team","noc_id"]
+        # line_writer2.writerow(header)
         next(csvfile)
         for line in line_reader:
             team=line[6]
@@ -96,8 +96,8 @@ with open('athlete_events.csv') as csvfile:
     with open('athlete_info.csv', 'w', newline="") as writefile3:
         line_reader = csv.reader(csvfile, delimiter = ',')
         line_writer3 = csv.writer(writefile3, delimiter = ',')
-        header = ["athlete_id","athlete_name","team_id"]
-        line_writer3.writerow(header)
+        # header = ["athlete_id","athlete_name","team_id"]
+        # line_writer3.writerow(header)
         next(csvfile)
         for line in line_reader:
             name_id = line[0]
@@ -119,8 +119,8 @@ with open('athlete_events.csv') as csvfile:
     with open('events_info.csv', 'w', newline="") as writefile4:
         line_reader = csv.reader(csvfile, delimiter = ',')
         line_writer4 = csv.writer(writefile4, delimiter = ',')
-        header = ["games_id", "games","year_name","event_name","athlete_id","medal"]
-        line_writer4.writerow(header)
+        # header = ["games_id", "games","year_name","event_name","athlete_id","medal"]
+        # line_writer4.writerow(header)
         next(csvfile)
         for line in line_reader:
             games = line[8]
