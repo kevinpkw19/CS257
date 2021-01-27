@@ -4,6 +4,10 @@
 import csv
 
 def create_noc_info():
+    """Creates a csv table noc_info which has fields: noc, id, and region"""
+
+    # noc dictionary with key: noc and value: another dictionary where keys are:
+    # key1: id, key2: region. 
     noc_dictionary={}
 
     with open('noc_regions.csv') as csvfile:
@@ -22,10 +26,14 @@ def create_noc_info():
     return noc_dictionary
 
 def create_team_info(noc_dictionary):
+    """Creates a csv table called team_info which has fields team_id, team, noc_id"""
+    
+    # team_dictionary with key: team and value: a dictionary where keys are:
+    # key1: id, key2: noc_id. 
     team_dictionary={}
 
     with open('athlete_events.csv') as csvfile:
-        with open('team_info.csv', 'w', newline="") as writefile2:
+        with open('team_info.csv', 'w', newline = "") as writefile2:
             line_reader = csv.reader(csvfile, delimiter = ',')
             line_writer2 = csv.writer(writefile2, delimiter = ',')
             next(csvfile)
@@ -45,6 +53,10 @@ def create_team_info(noc_dictionary):
 
 
 def create_athlete_info(team_dictionary):
+    """Creates a csv table called team_info which has name_id, athlete, team_id"""
+
+    # athlete_dictionary with key: athlete and value: another dictionary where keys are:
+    # key1: id, key2: team_id. 
     athlete_dictionary = {}
 
     with open('athlete_events.csv') as csvfile:
@@ -69,7 +81,11 @@ def create_athlete_info(team_dictionary):
         
 
 def create_events_info(athlete_dictionary, noc_dictionary):
+    """Creates a csv table noc_info which has fields: games_id, games, year, event, athlete_id,medal,noc_id"""
+
+    # games_dictionary with key: games and value is a id for each game
     games_dictionary = {}
+    
     with open('athlete_events.csv') as csvfile:
         with open('events_info.csv', 'w', newline = "") as writefile4:
             line_reader = csv.reader(csvfile, delimiter = ',')
@@ -85,7 +101,7 @@ def create_events_info(athlete_dictionary, noc_dictionary):
                 noc = line[7]
                 if games not in games_dictionary:
                     games_dictionary[games] = len(games_dictionary)+1
-                if athlete_dictionary.get(athlete)!= None and noc_dictionary.get(noc)!= None:
+                if athlete_dictionary.get(athlete) != None and noc_dictionary.get(noc)!= None:
                     athlete_id = athlete_dictionary.get(athlete).get("id")
                     games_id = games_dictionary.get(games)
                     noc_id = noc_dictionary.get(noc).get("id")

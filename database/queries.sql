@@ -14,7 +14,6 @@ AND athlete_info.athlete_id = events_info.athlete_id
 AND events_info.medal != 'NA'
 ORDER BY year_name;
 
-
 SELECT COUNT(events_info.medal), noc_info.noc 
 FROM events_info
 INNER JOIN noc_info ON events_info.noc_id = noc_info.id
