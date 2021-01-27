@@ -19,4 +19,5 @@ CREATE TABLE events_info(
     year_name text,
     event_name text,
     athlete_id text,
-    medal text);
+    medal text,
+    noc_id text);
