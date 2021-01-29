@@ -56,10 +56,10 @@ def create_athlete_by_gold_medals_query(athlete_input):
 def get_arguments():
     parser = argparse.ArgumentParser()
     group = parser.add_mutually_exclusive_group()
-    group.add_argument("--abn", action="store_true", help = "Accepts a National Olympic Committee(NOC) as the parameter and                                                                 returns a list of all the athletes from that NOC")
-    group.add_argument("--nbg", action="store_true", help = "Lists all National Olympic Committees(NOC) by decreasing gold medal                                                            count")
-    group.add_argument("--gba", action="store_true", help = "Accepts a search string as a parameter and lists the athletes that                                                             match the search string that have won gold medals and their                                                                    corresponding gold medal count, if they have won any.")
-    parser.add_argument("Input", nargs = "*", type=str, help = "for --abn, provide an NOC. for --gba, provide athlete name.")
+    group.add_argument("--athlete_by_noc", "-a", action="store_true", help = "Accepts a National Olympic Committee(NOC) as the parameter and returns a list of all the athletes from that NOC")
+    group.add_argument("--noc_by_gold", "-n", action="store_true", help = "Lists all National Olympic Committees(NOC) by decreasing gold medal count")
+    group.add_argument("--gold_by_athlete", "-g", action="store_true", help = "Accepts a search string as a parameter and lists the athletes that match the search string that have won gold medals and their corresponding gold medal count, if they have won any.")
+    parser.add_argument("Input", nargs = "*", type=str, help = "for --athlete_by_noc, provide an NOC. for --gold_by_athlete, provide athlete name.")
 
     args = parser.parse_args()
 
@@ -70,16 +70,16 @@ def main():
     
     # If user writes command without input, print error message
     if len(args.Input) == 0:
-        if args.nbg:
+        if args.noc_by_gold:
             create_gold_medals_by_noc_query()
         else:
-            print("Your must use --nbg if you don't provide any input parameters.")
+            print("Your must use --noc_by_gold if you don't provide any input parameters.")
 
     # checks the number of inputs given by user and prints error message accordingly
     elif len(args.Input) == 1:
-        if args.gba:
+        if args.gold_by_athlete:
             create_athlete_by_gold_medals_query(args.Input[0])
-        elif args.abn:
+        elif args.athlete_by_noc:
             create_athletes_by_noc_query(args.Input[0])
             
     else:
