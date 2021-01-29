@@ -18,7 +18,7 @@ def connect_to_database(query,search_string= None):
 
     try:
         cursor = connection.cursor()
-        if search_string!=None:
+        if search_string != None:
             cursor.execute(query, (search_string,))
         else:
             cursor.execute(query)
@@ -40,8 +40,8 @@ def display_results(cursor):
 
 
 def create_athletes_by_noc_query(noc_input):
-    search_string= str(noc_input)
-    query ="SELECT athlete_info.athlete_name FROM athlete_info, team_info, noc_info WHERE noc_info.noc = " + search_string + "AND athlete_info.team_id = team_info.team_id AND team_info.noc_id = noc_info.noc_id ORDER BY athlete_info.athlete_name;"
+    search_string= "'{}'".format(str(noc_input))
+    query ="SELECT athlete_info.athlete_name FROM athlete_info, team_info, noc_info WHERE noc_info.noc = " + search_string + " AND athlete_info.team_id = team_info.team_id AND team_info.noc_id = noc_info.noc_id ORDER BY athlete_info.athlete_name;"
     # "SELECT athlete_info.athlete_name FROM athlete_info, team_info, noc_info WHERE noc_info.noc = '{}' AND athlete_info.team_id = team_info.team_id AND team_info.noc_id = noc_info.noc_id ORDER BY athlete_info.athlete_name;".format(noc_input)
     print('===== All athletes from {} ====='.format(noc_input))
     connect_to_database(query,search_string)
@@ -53,8 +53,8 @@ def create_gold_medals_by_noc_query():
 
 
 def create_athlete_by_gold_medals_query(athlete_input):
-    search_string= str(athlete_input)
-    query = "SELECT athlete_info.athlete_name, COUNT(events_info.medal) FROM athlete_info, events_info WHERE events_info.medal = 'Gold' AND athlete_info.athlete_name LIKE %"+ search_string + "% AND athlete_info.athlete_id = events_info.athlete_id GROUP BY athlete_info.athlete_name;"
+    search_string = "'%{}%'".format(str(athlete_input))
+    query = "SELECT athlete_info.athlete_name, COUNT(events_info.medal) FROM athlete_info, events_info WHERE events_info.medal = 'Gold' AND athlete_info.athlete_name LIKE "+ search_string + " AND athlete_info.athlete_id = events_info.athlete_id GROUP BY athlete_info.athlete_name;"
     print(('===== Gold Medals that match search string "{}" =====').format(athlete_input))
     connect_to_database(query)
 
