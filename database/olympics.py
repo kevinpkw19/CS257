@@ -9,7 +9,7 @@ from config import user
 from config import password
 
 
-def connect_to_database(query):
+def connect_to_database(query,search_string= None):
     try:
         connection = psycopg2.connect(database=database, user=user, password=password)
     except Exception as e:
@@ -18,14 +18,17 @@ def connect_to_database(query):
 
     try:
         cursor = connection.cursor()
-        cursor.execute(query)
+        if search_string!=None:
+            cursor.execute(query, (search_string,))
+        else:
+            cursor.execute(query)
     except Exception as e:
         print(e)
         exit()
 
     display_results(cursor)
     connection.close()
-    
+
 
 def display_results(cursor):
     print('\n')
@@ -34,12 +37,14 @@ def display_results(cursor):
             print(column, end = " ---------- ")
         print()
     print()
-    
+
 
 def create_athletes_by_noc_query(noc_input):
-    query = "SELECT athlete_info.athlete_name FROM athlete_info, team_info, noc_info WHERE noc_info.noc = '{}' AND athlete_info.team_id = team_info.team_id AND team_info.noc_id = noc_info.noc_id ORDER BY athlete_info.athlete_name;".format(noc_input)
+    search_string= str(noc_input)
+    query ="SELECT athlete_info.athlete_name FROM athlete_info, team_info, noc_info WHERE noc_info.noc = " + search_string + "AND athlete_info.team_id = team_info.team_id AND team_info.noc_id = noc_info.noc_id ORDER BY athlete_info.athlete_name;"
+    # "SELECT athlete_info.athlete_name FROM athlete_info, team_info, noc_info WHERE noc_info.noc = '{}' AND athlete_info.team_id = team_info.team_id AND team_info.noc_id = noc_info.noc_id ORDER BY athlete_info.athlete_name;".format(noc_input)
     print('===== All athletes from {} ====='.format(noc_input))
-    connect_to_database(query)
+    connect_to_database(query,search_string)
 
 def create_gold_medals_by_noc_query():
     query = "SELECT COUNT(events_info.medal), noc_info.noc FROM events_info INNER JOIN noc_info ON events_info.noc_id = noc_info.noc_id WHERE events_info.medal = 'Gold' AND events_info.noc_id = noc_info.noc_id GROUP BY events_info.medal, noc_info.noc ORDER BY COUNT(events_info.medal) DESC;"
@@ -48,7 +53,8 @@ def create_gold_medals_by_noc_query():
 
 
 def create_athlete_by_gold_medals_query(athlete_input):
-    query = "SELECT athlete_info.athlete_name, COUNT(events_info.medal) FROM athlete_info, events_info WHERE events_info.medal = 'Gold' AND athlete_info.athlete_name LIKE '%{}%' AND athlete_info.athlete_id = events_info.athlete_id GROUP BY athlete_info.athlete_name;".format(athlete_input)
+    search_string= str(athlete_input)
+    query = "SELECT athlete_info.athlete_name, COUNT(events_info.medal) FROM athlete_info, events_info WHERE events_info.medal = 'Gold' AND athlete_info.athlete_name LIKE %"+ search_string + "% AND athlete_info.athlete_id = events_info.athlete_id GROUP BY athlete_info.athlete_name;"
     print(('===== Gold Medals that match search string "{}" =====').format(athlete_input))
     connect_to_database(query)
 
@@ -67,7 +73,7 @@ def get_arguments():
 
 def main():
     args = get_arguments()
-    
+
     # If user writes command without input, print error message
     if len(args.Input) == 0:
         if args.noc_by_gold:
@@ -81,7 +87,7 @@ def main():
             create_athlete_by_gold_medals_query(args.Input[0])
         elif args.athlete_by_noc:
             create_athletes_by_noc_query(args.Input[0])
-            
+
     else:
         print("Error. Too many arguments.")
 
