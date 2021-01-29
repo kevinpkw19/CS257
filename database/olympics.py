@@ -1,5 +1,5 @@
 # Made by Aishwarya Varma and Kevin Phung
-# Date: 1/28/2021
+# Date: 1/29/2021
 
 import argparse
 import psycopg2
@@ -37,12 +37,12 @@ def display_results(cursor):
     
 
 def create_athletes_by_noc_query(noc_input):
-    query = "SELECT athlete_info.athlete_name FROM athlete_info, team_info, noc_info WHERE noc_info.noc = '{}' AND athlete_info.team_id = team_info.team_id AND team_info.noc_id = noc_info.id ORDER BY athlete_info.athlete_name;".format(noc_input)
+    query = "SELECT athlete_info.athlete_name FROM athlete_info, team_info, noc_info WHERE noc_info.noc = '{}' AND athlete_info.team_id = team_info.team_id AND team_info.noc_id = noc_info.noc_id ORDER BY athlete_info.athlete_name;".format(noc_input)
     print('===== All athletes from {} ====='.format(noc_input))
     connect_to_database(query)
 
 def create_gold_medals_by_noc_query():
-    query = "SELECT COUNT(events_info.medal), noc_info.noc FROM events_info INNER JOIN noc_info ON events_info.noc_id = noc_info.id WHERE events_info.medal = 'Gold' AND events_info.noc_id = noc_info.id GROUP BY events_info.medal, noc_info.noc ORDER BY COUNT(events_info.medal) DESC;"
+    query = "SELECT COUNT(events_info.medal), noc_info.noc FROM events_info INNER JOIN noc_info ON events_info.noc_id = noc_info.noc_id WHERE events_info.medal = 'Gold' AND events_info.noc_id = noc_info.noc_id GROUP BY events_info.medal, noc_info.noc ORDER BY COUNT(events_info.medal) DESC;"
     print('===== Gold Medals per NOC in decreasing order =====')
     connect_to_database(query)
 

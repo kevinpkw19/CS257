@@ -16,9 +16,9 @@ ORDER BY year_name;
 
 SELECT COUNT(events_info.medal), noc_info.noc 
 FROM events_info
-INNER JOIN noc_info ON events_info.noc_id = noc_info.id
+INNER JOIN noc_info ON events_info.noc_id = noc_info.noc_id
 WHERE events_info.medal = 'Gold'
-AND events_info.noc_id = noc_info.id
+AND events_info.noc_id = noc_info.noc_id
 GROUP BY events_info.medal, noc_info.noc 
 ORDER BY COUNT(events_info.medal) DESC;
 

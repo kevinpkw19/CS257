@@ -4,7 +4,7 @@ CREATE TABLE athlete_info(
     team_id text);
 
 CREATE TABLE noc_info(
-    id text, 
+    noc_id text, 
     noc text, 
     region text);
     
