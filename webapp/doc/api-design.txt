@@ -1,0 +1,131 @@
+
+Authors: Kevin Phung, Kyosuke Imai
+
+REQUEST: /help
+RESPONSE: Returns this page
+
+REQUEST: /search_songs
+GET parameters:
+	search_string(required) : Searches by song name 
+RESPONSE: A JSON list of dictionaries, each of which represents one song within the data sorted by popularity. Each song dictionary will have the following fields:
+	Song ID -- (int) the ID of the song
+	Song Name -- (string) the name of the song
+	Artist	-- (string) The name of the artist
+	Year	-- (string) The year the song was released?
+	Popularity	--(int) The popularity of a song (rated between 0-100) as calculated by spotify's in-house algorithms
+	Tempo	--(int) The tempo of the track in Beats Per Minute(BPM) with a range of (0-244)
+	Duration	--(int) The length of the track in seconds.
+	Danceability	--(int) The relative metric of the track being danceable (rated between 0 and 1)
+
+
+REQUEST: /search_genre
+GET parameters:
+	search_string(required) : Searches for songs by genre
+RESPONSE: A JSON list of strings, each of which is an artist that has made music in that genre
+	Song ID -- (int) the ID of the song
+	Song name -- (string) the name of the song
+	Genre name -- (string) the genre of the song
+	Artist	-- (string) The name of the artist
+	Year	-- (string) The year the song was released?
+	Popularity	--(int) The popularity of a song (rated between 0-100) as calculated by spotify's in-house algorithms
+	Tempo	--(int) The tempo of the track in Beats Per Minute(BPM) with a range of (0-244)
+	Duration	--(int) The length of the track in seconds.
+	Danceability	--(int) The relative metric of the track being danceable (rated between 0 and 1)
+	Genre Tempo	--(int) The average tempo of all their tracks in Beats Per Minute(BPM) with a range of (0-244)
+	Genre Duration	--(int) The average length of all their track in seconds.
+	Genre Danceability	--(int) The average relative metric of their tracks being danceable (rated between 0 and 1)
+
+
+REQUEST: /search_artist
+GET parameters:
+	search_string(required) : Searches for songs by artist
+RESPONSE: A JSON list of dictionaries, each of which represents one artist within the database. Each dictionary will have the following fields:
+	Song ID -- (int) the ID of the song
+	Song Name -- (string) the name of the song
+	Artist	-- (string) The name of the artist
+	Year	-- (string) The year the song was released?
+	Popularity	--(int) The popularity of a song (rated between 0-100) as calculated by spotify's in-house algorithms
+	Tempo	--(int) The tempo of the track in Beats Per Minute(BPM) with a range of (0-244)
+	Duration	--(int) The length of the track in seconds.
+	Danceability	--(int) The relative metric of the track being danceable (rated between 0 and 1)
+	Artist Tempo	--(int) The average tempo of all their tracks in Beats Per Minute(BPM) with a range of (0-244)
+	Artist Duration	--(int) The average length of all their track in seconds.
+	Artist Danceability	--(int) The average relative metric of their tracks being danceable (rated between 0 and 1)
+
+REQUEST: /create_playlist
+GET parameters:
+	Playlist_name(required): Enter a playlist name for the new playlist
+
+RESPONSE: A string 'True' if successful
+
+
+REQUEST: /delete_playlist
+GET parameters:
+	Playlist_name(required): The playlist name to be deleted
+
+RESPONSE: A string 'True' if successful
+
+REQUEST: /insert_into_playlist
+GET parameters:
+	Playlist_name(required): Playlist where the song will be added to
+	Song_ID(required): Song that will be added to playlist
+
+RESPONSE: A string 'True' if successful
+
+REQUEST: /delete_from_playlist
+GET parameters:
+	Playlist_name(required): Playlist where the song will be deleted from
+	Song_ID(required): Song that will be deleted
+
+RESPONSE: A string 'True' if successful
+
+
+
+REQUEST: /get_song_ids_by_playlist
+GET parameters:
+	None
+RESPONSE: A JSON list of dictionaries, each of which represents one song that is stored within a particular playlist
+	Song ID -- (int) the ID of the song
+	Playlist Name -- (str) Name of the playlist
+
+
+REQUEST: /playlist_menu
+GET parameters:
+	None
+RESPONSE: A JSON list of dictionaries, each of which represents one playlist and the total number of songs in it.
+	Playlist Name -- (str) Name of the playlist
+	total_songs -- (int) Total count of songs in that playlist
+
+REQUEST: /specific_playlist_info
+GET parameters:
+	Playlist_name(required): The playlist we want details for
+RESPONSE: A JSON list of dictionaries, each of which represents one song from that playlist and its attributes.
+	Song ID -- (int) the ID of the song
+	Song Name -- (string) the name of the song
+	Artist	-- (string) The name of the artist
+	Year	-- (string) The year the song was released?
+	Popularity	--(int) The popularity of a song (rated between 0-100) as calculated by spotify's in-house algorithms
+	Tempo	--(int) The tempo of the track in Beats Per Minute(BPM) with a range of (0-244)
+	Duration	--(int) The length of the track in seconds.
+	Danceability	--(int) The relative metric of the track being danceable (rated between 0 and 1)
+
+
+
+
+REQUEST: /graph_one_playlist
+GET parameters:
+	Playlist_name(required): The playlist we want details for
+	Metric (required): The desired metric we want to compare
+RESPONSE: A JSON list of dictionaries, each of which represents one song from that playlist and its metric that the user wants.
+	Song ID -- (int) the ID of the song
+	Song Name -- (string) the name of the song
+	Popularity	--(int) The popularity of a song (rated between 0-100) as calculated by spotify's in-house algorithms
+	Tempo	--(int) The tempo of the track in Beats Per Minute(BPM) with a range of (0-244)
+	Duration	--(int) The length of the track in seconds.
+	Danceability	--(int) The relative metric of the track being danceable (rated between 0 and 1)
+
+
+UNDER CONSTRUCTION:
+
+REQUEST: /compare_playlists
+RESPONSE: A JSON list of dictionaries, meant to compare songs from 2 different playlists against each other in terms of a specific metric.

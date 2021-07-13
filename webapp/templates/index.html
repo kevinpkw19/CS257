@@ -1,0 +1,120 @@
+ <!-- Authors: Kevin Phung, Kyosuke Imai   -->
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='webapp.css') }}" />
+    <script type="text/javascript" src="{{ url_for('static', filename='sorttable.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='webapp.js') }}"></script>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+    <title>CS 257: Software Design</title>
+</head>
+<header>
+  <div class="TopPanel">
+  <h1 class = "title", id="top_header"><a id = "TopHeader" href = "/"> Spotify Music <br/>  Advanced Search </a> <br/><div id="SubHeader">Home Page</div></h1>
+  <h2 id="instructions_header"><a id = "instructions"> Start Searching to add to your playlists!</h2>
+  <div class="flex-container">
+    <div>
+      <div class = "DropDownMenu" id = "DropDownMenu">
+        <select class="DDButton" id = "DDButton">
+        <div class = "DDContent" id = "DDContent">
+          <option id = "DDSong" value = 'song' >Song Name </option>
+          <option id = "DDArtist" value = 'artist' >Artist Name </option>
+          <option id = "DDGenre" value = 'genre' >Genre Name </option>
+        </div>
+        </select>
+      </div>
+    </div>
+    <div>
+        <p><input id="search_string" type="search" placeholder="Search by Song Name Here (e.g Yesterday)" />
+    </div>
+    <div>
+        <p><button type="submit" id="search_button" >Search</button></p>
+    </div>
+  </div>
+
+
+  <nav class="topnav">
+    <a>Home</a>
+    <div class = "playlists">
+      <a href="/api/playlist_menu_page">Add/Manage Playlists</a>
+    </div>
+    <a href="/api/data_visualizer">Data Visualizer</a>
+    <a href="/api/help  ">Help</a>
+
+
+  </nav>
+
+
+</header>
+
+<body>
+  <h2 class = "quote" id="page_quote" >  Music is life itself. <br/> <em>-Louis Armstrong</em>  </h2>
+
+  <div id = "divider_for_home">
+    <table class="sortable" id="search_results_table_song" style="display:none">
+      <thead id="header_song" >
+        <tr>
+       <th >Song Name</th>
+       <th >Artist</th>
+       <th >Release Year</th>
+       <th>Popularity</th>
+       <th >Tempo</th>
+       <th >Duration</th>
+       <th>Danceability</th>
+       <th class="sorttable_nosort" >Choose Playlist</th>
+       <th class="sorttable_nosort" >Add</th>
+      </tr>
+   </thead>
+ <tbody id="search_results_body_song"></tbody>
+
+ </table>
+
+
+ <table class="sortable" id="search_results_table_artist" style="display:none" >
+   <thead id="header_artist" >
+     <tr>
+    <th>Song Name</th>
+    <th>Artist</th>
+    <th>Release Year</th>
+    <th>Popularity</th>
+    <th>Tempo</th>
+    <th>Duration</th>
+    <th>Danceability</th>
+    <th>Artist Tempo (avg.)</th>
+    <th>Artist Duration (avg.)</th>
+    <th>Artist Danceability (avg.)</th>
+    <th class="sorttable_nosort" >Choose Playlist</th>
+    <th class="sorttable_nosort" >Add</th>
+   </tr>
+</thead>
+<tbody id="search_results_body_artist"></tbody>
+
+</table>
+
+<table class="sortable" id="search_results_table_genre" style="display:none">
+  <thead id="header_genre" >
+    <tr>
+   <th>Song Name</th>
+   <th>Genre</th>
+   <th>Artist</th>
+   <th>Release Year</th>
+   <th>Popularity</th>
+   <th>Tempo</th>
+   <th>Duration</th>
+   <th>Danceability</th>
+   <th>Genre Tempo(avg)</th>
+   <th>Genre Duration(avg)</th>
+   <th>Genre Danceability(avg)</th>
+   <th class="sorttable_nosort" >Choose Playlist</th>
+   <th class="sorttable_nosort" >Add</th>
+  </tr>
+</thead>
+<tbody id="search_results_body_genre"></tbody>
+
+</table>
+
+</div>
+
+</body>
+</html>

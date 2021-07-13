@@ -1,0 +1,185 @@
+#TopHeader2{
+  text-decoration-color: #45A29E;
+  -webkit-text-stroke: 1px #483D8B;
+  font-weight:bold;
+  color: #45A29E;
+  text-decoration:underline;
+}
+header .title{
+  font-size: 50px;
+}
+
+
+header .playlists .DDM-content{
+  opactiy: 0.7;
+  background-color: black;
+}
+
+/* specify attributes of the top panel object located in the top of the web page */
+header .TopPanel{
+  display:fixed;
+  background-color: #1F2A33;
+  border-width: 100px;
+  text-align: left;
+  padding: 20px;
+  font-family: Arial.;
+  font-weight:bold;
+  font-size: 20px;
+  color:#66FCF1;
+  width: 100%;
+  height: 30%;
+}
+
+header .topnav{
+  float: right;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-self: center;
+}
+
+header .topnav a{
+  color: white;
+  margin-left: 8px;
+}
+
+header .topnav a:hover{
+  color:#66FCF1;
+  background-color: transparent;
+}
+
+header .DDM-content{
+  display:none;
+}
+
+header .topnav .playlists a:hover + .DDM-content{
+  display:block;
+}
+#DownloadCSVButton{
+  height:80px;
+  width: 90px;
+  display: block;
+  color:white;
+  font-size:12pt;
+  font-weight:bold;
+  border: 2px solid #66FCF1;
+  background-color: #1F2A33;
+  float:right;
+  margin: 20px;
+}
+#DownloadCSVButton:hover{
+  background-color: #66FCF1 !important;
+  color:black;
+  border: 4px solid:#black;
+}
+
+#addToPLaylist{
+  display: incline-block;
+  top: 20px;
+  color: #66FCF1;
+  font-size: 20px;
+  text-align:left;
+  top:100%;
+  text-align:center;
+  background-color: #45A29E;
+}
+
+#addToPLaylist a{
+  color: #F0F8FF;
+  font-weight: bold;
+}
+#addToPLaylist a:hover{
+  color:#0000FF;
+  opacity:1.0;
+}
+
+#SubHeader{
+  color: #45A29E;
+  margin-top: 25px;
+}
+
+body #pageHeader{
+  color: white;
+  font-size:30px;
+}
+
+
+
+body {
+  margin: 40px;
+  size: 100%;
+  font-family: Helvetica;
+  background: #45A29E;
+  background-image: url("bg.jpg");
+  opacity: 0.7;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+/* table stucture specifying color of columns, rows and hard coding in a index counter */
+table.sortable tbody {
+    counter-reset: sortabletablescope;
+}
+
+table.sortable thead tr::before {
+    content: "";
+    display: table-cell;
+    content: "No.";
+    font-size: 12px;
+    text-align: center;
+}
+
+table.sortable tbody tr::before {
+    content: counter(sortabletablescope);
+    counter-increment: sortabletablescope;
+    display: table-cell;
+    background-color: #f8f8ff;
+}
+
+
+table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after {
+    content: " \25B4\25BE"
+}
+
+table.sortable thead {
+    opacity: 0.9;
+    display:table-header-group;
+    background-color:#707070;
+    color: #F5F5F5;
+    font-weight: bold;
+    cursor: default;
+    width:100%;
+
+}
+
+table.scroll tbody {
+    overflow: auto;
+    display: table-header-group;
+    width:100%;
+    height:500px;
+}
+
+table {
+   width: 100%;
+}
+
+
+thead th{
+  width:250px;
+}
+tbody td{
+  width: 250px;
+}
+
+table.sortable tbody tr:nth-child(2n) td {
+  opacity: 0.8;
+  background: #f8f8ff;
+
+}
+table.sortable tbody tr:nth-child(2n+1) td {
+  opacity: 0.8;
+  background: #d3d3d3;
+}

@@ -1,0 +1,67 @@
+<!-- Authors: Kevin Phung, Kyosuke Imai   -->
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+   <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='allPlaylists.css') }}" />
+   <script type="text/javascript" src="{{ url_for('static', filename='sorttable.js') }}"></script>
+   <script type="text/javascript" src="{{ url_for('static', filename='allPlaylists.js') }}"></script>
+   <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+   <title>CS 257: Software Design</title>
+</head>
+<header>
+
+ <div class="TopPanel">
+ <h1 class = "title" id="top_header"><a id = "TopHeader" href = "/"> Spotify Music <br/>  Advanced Search </a>  <br/> <div id="SubHeader">Add/Manage Playlists</div></h1>
+
+
+ <div id="createPlaylistBar" class="overlay" >
+   <span class="closebtn" onclick="closeSearch()" title="Close Overlay">x</span>
+   <div class="overlay-content">
+     <div class="flex-container">
+     <form action="/api/playlist_menu_page">
+       <div>
+           <p><input id="input_playlist_name" type="text" placeholder="Set Playlist Name" />
+       </div>
+       <div>
+           <p><button type="submit" id="create_playlist" onclick= "createNewPlaylist()">Create Playlist</button></p>
+       </div>
+     </form>
+      </div>
+   </div>
+ </div>
+ <button class="addPlaylistButton" onclick="openSearch()">Add Playlist</button>
+
+
+ <nav class="topnav">
+   <a class="active" href="/">Home</a>
+   <div class = "playlists">
+     <a>Add/Manage Playlists</a>
+   </div>
+   <a href="/api/data_visualizer">Data Visualizer</a>
+   <a href="/api/help">Help</a>
+
+ </nav>
+</header>
+
+<body>
+  <h2 class= "pageHeader">Manage Your Playlists</h2>
+  <h3>Click on the name of a playlist to get more details!</h3>
+
+  <div class="flex-container">
+  </div>
+
+  <div id= table_div>
+  <table class="sortable" id="playlists_table" style="display:none">
+    <thead id="playlist_table_header" >
+    <tr>
+     <th>Playlist Name</th>
+     <th>Number of songs</th>
+     <th class="sorttable_nosort" >Delete Playlist</th>
+    </tr>
+  </thead>
+  <tbody id="playlists_table_body"></tbody>
+</div>
+</body>
+
+</html>

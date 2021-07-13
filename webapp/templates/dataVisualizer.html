@@ -1,0 +1,59 @@
+<!-- Authors: Kevin Phung, Kyosuke Imai   -->
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+   <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dataVisualizer.css') }}" />
+   <script type="text/javascript" src="{{ url_for('static', filename='sorttable.js') }}"></script>
+   <script src= https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.min.js> </script>
+   <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+   <title>CS 257: Software Design</title>
+</head>
+<header>
+ <div class="TopPanel">
+ <h1 class = "title" id="top_header"><a id = "TopHeader" href = "/"> Spotify Music <br/>  Advanced Search </a>  <br/> <div id = "SubHeader" > Data Visualizer </div></h1>
+ <h2>Choose a playlist and a metric to view some cool graphs!</h2>
+ <div class="flex-container">
+   <div class = "DropDownMenu" id = "DropDownPlaylist">
+     <select class="DDButton" id = "DDButtonPlaylist">
+     <div class = "DDContent" id = "DDContentPlaylist">
+       <option value = "default"> Choose a Playlist </option>
+     </div>
+     </select>
+   </div>
+   <div class = "DropDownMenu" id = "DropDownMetric">
+     <select class="DDButton" id = "DDButtonMetric">
+     <div class = "DDContent" id = "DDContentMetric">
+       <option value = "default"> Choose a Metric </option>
+       <option id = "DDpopularity" value = 'popularity' >popularity </option>
+       <option id = "DDtempo" value = 'tempo' >tempo </option>
+       <option id = "DDdanceability" value = 'danceability' >danceability </option>
+       <option id = "DDduration" value = 'duration' >duration </option>
+     </div>
+     </select>
+   </div>
+   <p><button type="Visualize" id="Start_visualize" onclick="getOnePlaylistDetails()">Visualize</button></p>
+ </div>
+
+
+ <nav class="topnav">
+   <a class="active" href="/">Home</a>
+  <a href="/api/playlist_menu_page">Add/Manage Playlists</a>
+   <a>Data Visualizer</a>
+   <a href="/api/help">Help</a>
+
+ </nav>
+ </div>
+</header>
+
+<body>
+
+
+<canvas id="myChart" width="700" height="300"></canvas>
+
+
+
+<script type="text/javascript" src="{{ url_for('static', filename='dataVisualizer.js') }}"></script>
+</body>
+
+</html>

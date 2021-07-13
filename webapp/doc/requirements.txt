@@ -1,0 +1,21 @@
+Authors: Kevin Phung, Kyosuke Imai
+
+Dataset will be retrieved from: https://www.kaggle.com/yamaerenay/spotify-dataset-19212020-160k-tracks
+
+STORY: A user can build their own playlist and sort their playlist according to the specified conditions. (Artist name, title, rating, etc)
+
+IMPLEMENTATION: One way to do this is by having a search bar with categories(where you specify what you want to search for *artist, title, release date*) Once the results are displayed below, there will be a plus button which you can click to add the song to a list. Potentially, we could display the list of songs(in a table format) with several headers which we could click to sort by. The default order of the songs in the list will be by rating(unless specified otherwise), and only the top 100 or 500 will be returned.
+
+STORY 2: A user might want to gain some insight into their music tastes or into the music tastes of the general population through the top 100 songs by some metric.
+
+IMPLEMENTATION: One way to do this is by having a data visualizer (likely a chart) that would allow the user to graph the songs in their playlist or the top 100 songs by specific metrics. For example: tempo, danceablity,liveness, etc. We could also allow the user to graph inter-playlist metrics (compare average metrics of songs between their playlists)
+
+STORY 3: A user might want to look for a specific song, artist or genre to gain some insight about it/them.
+
+IMPLEMENTATION: One way to do this is by having a search bar and 3 endpoints that would return specific information depending on the category chosen and the search string. For example, if searching by songs, it would return details like: artist, tempo,duration,popularity,etc. If searching by genre, it would return all artists that made music for that genre. If searching by artist, it would return all songs written by that artist and the artist details for specific metrics like their average song popularity, duration, etc.
+
+
+
+Additional considerations:
+-Have an advanced search capability.(search for more than multiple categories at the same time)
+-Have a way to manage your playlist you make(add, delete, save(save results as csv file onto local machine?), etc).

@@ -1,0 +1,55 @@
+<!-- Authors: Kevin Phung, Kyosuke Imai   -->
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+   <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='yourPlaylist.css') }}" />
+   <script type="text/javascript" src="{{ url_for('static', filename='sorttable.js') }}"></script>
+   <script type="text/javascript" src="{{ url_for('static', filename='YourPlaylist.js') }}"></script>
+   <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+   <title>CS 257: Software Design</title>
+</head>
+<header>
+ <div class="TopPanel">
+ <h1 class = "title", id="top_header"> <a id = "TopHeader2" href = "/"> Spotify Music <br/>  Advanced Search </a> <br/> <div id = "SubHeader"> </div></h1>
+
+ <nav class="topnav">
+   <a class="active" href="/">Home</a>
+   <div class = "playlists">
+     <a href="/api/playlist_menu_page">Add/Manage Playlists</a>
+   </div>
+   <a href="/api/data_visualizer">Data Visualizer</a>
+   <a href="/api/help  ">Help</a>
+
+ </nav>
+
+</header>
+
+<body>
+  <h2 class= "pageHeader" id = "pageHeader"> Your Playlist </h2>
+
+  <button id = "DownloadCSVButton"onclick="downloadCSVFile()"> Download Playlist as CSV </button>
+
+
+  <div id = "divider_for_playlists">
+  <table class="sortable" id="playlist_table" style="display:none" >
+    <thead id="header_playlist" >
+      <tr>
+     <th>Song Name</th>
+     <th>Artist</th>
+     <th>Release Year</th>
+     <th>Popularity</th>
+     <th>Tempo</th>
+     <th>Duration</th>
+     <th>Danceability</th>
+     <th class="sorttable_nosort">Delete from Playlist</th>
+    </tr>
+  </thead>
+  <tbody id="playlist_body"></tbody>
+
+  </table>
+  </div>
+<div id=addToPLaylist> <a href="/"> Add To Playlist </a>
+</div>
+  </body>
+</html>

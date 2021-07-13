@@ -1,0 +1,32 @@
+<! -- Authors: Kevin Phung, Kyosuke Imai -->
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+   <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='help.css') }}" />
+   <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+   <title>CS 257: Software Design</title>
+</head>
+
+
+<header>
+  <div class="TopPanel">
+  <h1 class = "title" id="top_header"><a id = "TopHeader" href = "/"> Spotify Music <br/>  Advanced Search </a>  <br/> <div id="SubHeader">Help</div></h1>
+  <nav class="topnav">
+    <a class="active" href="/">Home</a>
+    <div class = "playlists">
+      <a href="/api/playlist_menu_page">Add/Manage Playlists</a>
+    </div>
+    <a href="/api/data_visualizer">Data Visualizer</a>
+    <a>Help</a>
+
+  </nav>
+  </div>
+</header>
+<body>
+
+
+<pre>{{ help_text }}</pre>
+
+</body>
+</html>
